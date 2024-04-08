@@ -1,0 +1,2 @@
+org.springframework.cloud.gateway.server.mvc.filter.FilterSupplier=\
+  com.coface.corp.autonomy.gateway.filters.FilterFunctions.FilterSupplier

@@ -1,0 +1,16 @@
+debug: true
+logging:
+  level:
+    org.springframework.web: TRACE
+    org.springframework.security: TRACE
+    reactor.netty.http.client: DEBUG
+server:
+  servlet:
+    context-path: /program-service
+  port: 8081
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+

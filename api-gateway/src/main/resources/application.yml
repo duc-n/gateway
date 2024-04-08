@@ -1,0 +1,48 @@
+debug: true
+logging:
+  level:
+    #org.springframework.cloud.gateway.server.mvc: TRACE
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.web: TRACE
+    org.springframework.security: TRACE
+    reactor.netty.http.client: DEBUG
+
+server:
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+
+  # Database schema initialization mode.
+  #    jdbc:
+  #      initialize-schema: always
+  #      # Path to the SQL file to use to initialize the database schema.
+  #      schema: classpath:org/springframework/session/jdbc/schema-@@platform@@.sql
+  #      # Name of the database table used to store sessions.
+  #      table-name: SPRING_SESSION
+  #
+  #  datasource:
+  #    url: jdbc:oracle:thin:@//devscan1.coface.dns:1521/pdbgridpadv
+  #    username: autonomy2
+  #    password: autonomy2
+  #    driver-class-name: oracle.jdbc.driver.OracleDriver
+  cloud:
+    gateway:
+      mvc:
+
+        routes:
+            #http://grprocxd10-078.group.coface.dns:8080/program-service/api/program
+          - id: program-service
+            uri: http://grprocxd10-078.group.coface.dns:8081
+            predicates:
+              - Path=/program-service/api/**
+            filters:
+              - AddRequestCookieHeader
+
+autonomy:
+  authentication:
+    service-user: _web_cgsdashboard
+    service-password: integration
+    service-url: https://elanrestiadpa.coface.dns/framework-web-authentication/GetAccountIDFromEncryptedToken?tokenValue=
+
